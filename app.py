@@ -21,10 +21,10 @@ with col1:
         if ma_type == "SMA":
             fig, errors = simple_moving_average(n)
         elif ma_type == "Weighted MA":
-            # Add weight sliders dynamically based on the value of n
+            # Add weight decimal inputs dynamically based on the value of n
             weights = []
             for i in range(n):
-                weight = st.slider(f"Weight {i+1}", min_value=0.0, max_value=1.0, value=1.0/n, step=0.01, key=f"weight_{i}")
+                weight = st.number_input(f"Weight {i+1}", min_value=0.00, max_value=1.00, value=round(1.0/n, 2), step=0.01, format="%.2f", key=f"weight_{i}")
                 weights.append(weight)
 
             # Normalize weights to ensure their sum is 1
